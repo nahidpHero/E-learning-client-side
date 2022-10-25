@@ -3,6 +3,7 @@ import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { Link } from 'react-router-dom';
+import { FaGoogle,FaGithub } from 'react-icons/fa';
 
 const Login = () => {
    const handleSignin=(event)=>{
@@ -32,12 +33,12 @@ const Login = () => {
       <div className='sign-in-button'>
       <div className="mb-2">
         <Button variant="primary" size="lg">
-        Signin with Google
+        <FaGoogle/> Signin with Google
         </Button>
       </div>
       <div className="mb-2">
         <Button variant="primary" size="lg">
-        Signin with Github
+        <FaGithub/> Signin with Github
         </Button>
       </div>
       </div>
