@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
    const handleSignin=(event)=>{
@@ -13,8 +14,8 @@ const Login = () => {
    }
 
     return (
-        <div className='form-style'>
-     <form onSubmit={handleSignin}>
+    <div>
+     <form onSubmit={handleSignin} className='form-style'>
       <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
         <Form.Control name='email' type="email" placeholder="Enter email" />
@@ -26,7 +27,20 @@ const Login = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      <p>Create a acount.<Link to='/register'>Register?</Link> </p>
     </form>
+      <div className='sign-in-button'>
+      <div className="mb-2">
+        <Button variant="primary" size="lg">
+        Signin with Google
+        </Button>
+      </div>
+      <div className="mb-2">
+        <Button variant="primary" size="lg">
+        Signin with Github
+        </Button>
+      </div>
+      </div>
     </div>
     );
 };
