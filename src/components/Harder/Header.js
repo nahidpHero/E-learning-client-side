@@ -6,15 +6,30 @@ import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
+import {FaUser} from 'react-icons/fa';
+import { Button, Image, Tooltip } from 'react-bootstrap';
+import ReactTooltip from 'react-tooltip';
 
 
 
 const Header = () => {
-    const {user}=useContext(AuthContext)
-    console.log(user.displayName)
+    const {user,logout}=useContext(AuthContext)
+
+    const handleLogOut=()=>{
+      logout()
+      .then(()=>{
+        //successfuly logout
+      }) 
+      .catch(error=>{
+        //error
+      })
+    }
+
+
+
     return (
         <div>
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
       <Container>
         <Navbar.Brand href="#home">E-learning</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -26,9 +41,31 @@ const Header = () => {
             <Nav.Link><Link to='/blog'  className='nav-item'>Blog</Link></Nav.Link>
           </Nav>
           <Nav>
-          <Nav.Link><Link to='/login' className='nav-item'>Login</Link></Nav.Link>
-            <Nav.Link eventKey={2} href="#memes">
-              {user.displayName}
+            <Nav.Link>
+            {
+              user?.uid?
+              <>
+              {
+                <Image style={{height:'40px'}} roundedCircle src={user.photoURL}></Image>
+              }
+              </>
+              :
+              <FaUser></FaUser>
+            }
+            </Nav.Link>
+          </Nav>
+          <Nav>
+            <Nav.Link>
+            {
+              user?.uid?
+              <>
+              {
+               <Button onClick={handleLogOut}>LogOut</Button>
+              }
+              </>
+              :
+              <Link to="/login"><Button>LogIn</Button></Link>
+            }
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>
