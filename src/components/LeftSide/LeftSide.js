@@ -1,4 +1,5 @@
 import React from 'react';
+import './LeftSide.css'
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -13,10 +14,10 @@ useEffect(()=>{
 },[])
 
     return (
-        <div>
+        <div className='leftside-style'>
             <h1>All courses</h1>
             {
-                categories.map(category=><h4 key={category.id}>
+                categories.map(category=><h4 className='mt-2' key={category.id}>
                     <Link to={`/course/${category.id}`}>{category.name}</Link>
                 </h4>)
             }

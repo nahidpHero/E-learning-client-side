@@ -1,11 +1,12 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import { Link } from 'react-router-dom';
 
 const CardComponent = ({course}) => {
-    const{name,image,title}=course
+    const{id,name,image,title,price}=course
     return (
-        <div>
+        <div className='m-3'>
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={image}/>
       <Card.Body>
@@ -13,7 +14,8 @@ const CardComponent = ({course}) => {
         <Card.Text>
          {title}
         </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
+        <p>Price:{price}</p>
+        <Button variant="black"><Link to={`/course/${id}`}>Details Courses</Link></Button>
       </Card.Body>
     </Card>
         </div>

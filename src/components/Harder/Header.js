@@ -7,13 +7,16 @@ import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
 import {FaUser} from 'react-icons/fa';
-import { Button, Image, Tooltip } from 'react-bootstrap';
+import { Button, Image} from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
+import CopyToClipboard from "react-copy-to-clipboard";
+import { useRef } from 'react';
 
 
 
 const Header = () => {
     const {user,logout}=useContext(AuthContext)
+    const tooltip = useRef()
 
     const handleLogOut=()=>{
       logout()
@@ -24,6 +27,7 @@ const Header = () => {
         //error
       })
     }
+
 
 
 
@@ -45,9 +49,24 @@ const Header = () => {
             {
               user?.uid?
               <>
-              {
-                <Image style={{height:'40px'}} roundedCircle src={user.photoURL}></Image>
-              }
+                <Image data-tip data-for={`register${user.displayName}`} style={{height:'40px'}} roundedCircle src={user.photoURL}></Image>
+                <>
+                <ReactTooltip
+                clickable
+                ref={tooltip}
+                className="tooltip"
+                id={`register${user.displayName}`}
+                place="top"
+                effect="solid"
+                delayHide={100}
+                 >
+                <>
+                <CopyToClipboard text="This is a test">
+                <div>{user.displayName}</div>
+               </CopyToClipboard>
+                </>
+                </ReactTooltip>
+                </>
               </>
               :
               <FaUser></FaUser>

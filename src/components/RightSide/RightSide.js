@@ -1,4 +1,5 @@
 import React from 'react';
+import './RightSide.css'
 import { useEffect } from 'react';
 import { useState } from 'react';
 import CardComponent from '../CardComponent/CardComponent';
@@ -13,7 +14,7 @@ const RightSide = () => {
   },[])
 
     return (
-        <div >
+        <div className='card-style'>
            {
             courses.map(course=><CardComponent course={course}></CardComponent>)
            }
