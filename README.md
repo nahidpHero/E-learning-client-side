@@ -1,3 +1,13 @@
 ## E-learning
 ##Live website link:(https://e-learning-da6d5.web.app/)
----first time i created some components
+
+
+##First time i was create some component
+-home
+-courses
+-FAQ
+-blog
+## 3 type of login system
+-email,password authentication
+-google authentication
+--GitHub authentication
