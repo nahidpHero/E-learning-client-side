@@ -33,7 +33,7 @@ const Login = () => {
     })
     .catch(error=>{
         console.error(error)
-        const message=error.message
+        const message=error.message;
         setErrormg(message)
     })
    }

@@ -5,9 +5,12 @@ import Form from 'react-bootstrap/Form';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const Register = () => {
     const {createUser}=useContext(AuthContext)
+    const [errormsg,setErrormsg]=useState('')
+    
     const navigate=useNavigate()
     const handleSignUp=(event)=>{
         event.preventDefault()
@@ -24,7 +27,11 @@ const Register = () => {
             form.reset()
             navigate('/')
         })
-        .catch(error=>console.log(error))
+        .catch(error=>{
+          console.log(error)
+          const message=error.message
+          setErrormsg(message)
+        })
 
        }
     
@@ -50,6 +57,7 @@ const Register = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
+      <p className='text-light'>{errormsg}</p>
     </form>
         </div>
     );
