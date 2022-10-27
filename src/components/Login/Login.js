@@ -6,8 +6,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle,FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
+import { useState } from 'react';
 
 const Login = () => {
+    const [errormg,setErrormg]=useState('')
     const {signUpwithGoogle,login,signInGithub}=useContext(AuthContext)
     const location=useLocation()
     const navigate=useNavigate()
@@ -31,6 +33,8 @@ const Login = () => {
     })
     .catch(error=>{
         console.error(error)
+        const message=error.message
+        setErrormg(message)
     })
    }
 
@@ -61,8 +65,9 @@ const Login = () => {
    }
 
     return (
-    <div>
-     <form onSubmit={handleSignin} className='form-style'>
+    <div className='form-style'>
+      <h1>LogIn</h1>
+     <form onSubmit={handleSignin}>
       <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
         <Form.Control name='email' type="email" placeholder="Enter email" />
@@ -71,18 +76,19 @@ const Login = () => {
         <Form.Label>Password</Form.Label>
         <Form.Control name='password' type="password" placeholder="Password" />
       </Form.Group>
+      <p>{errormg}</p>
       <Button variant="primary" type="submit">
         Submit
       </Button>
       <p>New to E-learning <Link to='/register'> Create a New Acount?</Link> </p>
     </form>
       <div className='sign-in-button'>
-      <div onClick={handleGoogleSignUp} className="mb-2">
+      <div onClick={handleGoogleSignUp}>
         <Button variant="primary" size="lg">
         <FaGoogle/> Signin with Google
         </Button>
       </div>
-      <div onClick={handleGitHubSignup} className="mb-2">
+      <div onClick={handleGitHubSignup}>
         <Button variant="primary" size="lg">
         <FaGithub/> Signin with Github
         </Button>

@@ -1,10 +1,15 @@
 .form-style{
-    width: 60%;
+    width: 40%;
     margin: 0 auto;
     margin-top: 50px;
     padding: 30px;
     border: 2px solid grey;
     border-radius: 20px;
+    margin-bottom:20px;
+    background-color: grey;
+}
+.form-style a{
+    color: azure;
 }
 .sign-in-button{
     text-align: center;

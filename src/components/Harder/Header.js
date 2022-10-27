@@ -31,22 +31,18 @@ const Header = () => {
         //error
       })
     }
-
-
-
-
     return (
         <div >
     <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
       <Container>
-        <Navbar.Brand href="#home"><BsBook/> E-learning</Navbar.Brand>
+        <Navbar.Brand className='fs-4 fw-bolder'><BsBook/>E-learning</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link><Link to='/home' className='nav-item'>Home</Link></Nav.Link>
-            <Nav.Link><Link to='/courses'  className='nav-item'>Courses</Link></Nav.Link>
-            <Nav.Link><Link to='/faq'  className='nav-item'>FAQ</Link></Nav.Link>
-            <Nav.Link><Link to='/blog'  className='nav-item'>Blog</Link></Nav.Link>
+            <Nav.Link className='fw-semibold'><Link to='/home' className='nav-item'>Home</Link></Nav.Link>
+            <Nav.Link className='fw-semibold'><Link to='/courses'  className='nav-item'>Courses</Link></Nav.Link>
+            <Nav.Link className='fw-semibold'><Link to='/faq'  className='nav-item'>FAQ</Link></Nav.Link>
+            <Nav.Link className='fw-semibold'><Link to='/blog'  className='nav-item'>Blog</Link></Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link>
