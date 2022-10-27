@@ -4,9 +4,11 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
+import { useNavigate } from 'react-router-dom';
 
 const Register = () => {
     const {createUser}=useContext(AuthContext)
+    const navigate=useNavigate()
     const handleSignUp=(event)=>{
         event.preventDefault()
         const form=event.target;
@@ -20,6 +22,7 @@ const Register = () => {
             const user=result.user
             console.log(user)
             form.reset()
+            navigate('/')
         })
         .catch(error=>console.log(error))
 

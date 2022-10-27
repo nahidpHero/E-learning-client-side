@@ -1,9 +1,10 @@
 import React from 'react';
+import './Faq.css'
 
 const Faq = () => {
     return (
-        <div>
-            <h1>This page is Faq</h1>
+        <div className='header-style'>
+            <h1>Your Right To Know</h1>
         </div>
     );
 };

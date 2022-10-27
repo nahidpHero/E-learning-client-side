@@ -2,13 +2,17 @@ import React from 'react';
 import './Login.css'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FaGoogle,FaGithub } from 'react-icons/fa';
 import { useContext } from 'react';
 import { AuthContext } from '../../AuthProvaider/AuthProvaider';
 
 const Login = () => {
     const {signUpwithGoogle,login,signInGithub}=useContext(AuthContext)
+    const location=useLocation()
+    const navigate=useNavigate()
+
+    const from=location.state?.from?.pathname || '/'
 
 
 
@@ -23,6 +27,7 @@ const Login = () => {
         const user=userCredential.user
         console.log(user)
         form.reset()
+        navigate(from ,{replace:true})
     })
     .catch(error=>{
         console.error(error)
@@ -36,6 +41,7 @@ const Login = () => {
     .then((result)=>{
         const user=result.user
         console.log(user)
+        navigate('/')
     })
     .catch(error=>{
         console.error(error)
@@ -47,6 +53,7 @@ const Login = () => {
     .then((result)=>{
         const user=result.user
         console.log(user)
+        navigate('/')
     })
     .catch(error=>{
         console.error(error)
@@ -67,7 +74,7 @@ const Login = () => {
       <Button variant="primary" type="submit">
         Submit
       </Button>
-      <p>Create a acount.<Link to='/register'>Register?</Link> </p>
+      <p>New to E-learning <Link to='/register'> Create a New Acount?</Link> </p>
     </form>
       <div className='sign-in-button'>
       <div onClick={handleGoogleSignUp} className="mb-2">

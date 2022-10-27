@@ -11,11 +11,15 @@ import { Button, Image} from 'react-bootstrap';
 import ReactTooltip from 'react-tooltip';
 import CopyToClipboard from "react-copy-to-clipboard";
 import { useRef } from 'react';
+import DarkModeToggle from "react-dark-mode-toggle";
+import { useState } from 'react';
+import {BsBook} from "react-icons/bs";
 
 
 
 const Header = () => {
     const {user,logout}=useContext(AuthContext)
+    const [isDarkMode, setIsDarkMode] = useState(() => false);
     const tooltip = useRef()
 
     const handleLogOut=()=>{
@@ -32,10 +36,10 @@ const Header = () => {
 
 
     return (
-        <div>
+        <div >
     <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
       <Container>
-        <Navbar.Brand href="#home">E-learning</Navbar.Brand>
+        <Navbar.Brand href="#home"><BsBook/> E-learning</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -87,6 +91,11 @@ const Header = () => {
             }
             </Nav.Link>
           </Nav>
+          <Nav> <DarkModeToggle
+           onChange={setIsDarkMode}
+           checked={isDarkMode}
+           size={80}
+           /></Nav>
         </Navbar.Collapse>
       </Container>
     </Navbar>

@@ -1,0 +1,9 @@
+.card-style a{
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 20px;
+}
+
+.card-style a:hover{
+    color: black;
+}

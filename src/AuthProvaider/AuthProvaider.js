@@ -10,6 +10,7 @@ export const AuthContext=createContext()
 const auth=getAuth(app)
 const AuthProvaider = ({children}) => {
     const [user,setUser]=useState([])
+    const [loading,setLoading]=useState(true)
     const googleProvider=new GoogleAuthProvider()
     const githubProvaider=new GithubAuthProvider()
    
@@ -23,28 +24,32 @@ const AuthProvaider = ({children}) => {
 
 
   const createUser=(email,password)=>{
+    setLoading(true)
     return createUserWithEmailAndPassword(auth,email,password)
   }
    
 
   const login=(email,password)=>{
+    setLoading(true)
     return signInWithEmailAndPassword(auth, email, password)
 }
 
 const logout=()=>{
+    setLoading(true)
     return signOut(auth)
 }
 
 useEffect(()=>{
    const unSubscribe= onAuthStateChanged(auth,currentUser=>{
      setUser(currentUser)
+     setLoading(false)
     })
     return()=>{
         unSubscribe()
     }
 },[])
 
-    const authInfo={user,signUpwithGoogle,createUser,login,signInGithub,logout}
+    const authInfo={user,signUpwithGoogle,createUser,login,signInGithub,logout,loading}
     return (
         <div>
             <AuthContext.Provider value={authInfo}>
