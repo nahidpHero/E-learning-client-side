@@ -3,6 +3,7 @@ import Blog from "../../components/Blog/Blog";
 import ChackoutPage from "../../components/ChackoutPage/ChackoutPage";
 import Courses from "../../components/Courses/Courses";
 import DetailsPage from "../../components/DetailsPage/DetailsPage";
+import ErrorPage from "../../components/ErrorPage/ErrorPage";
 import Faq from "../../components/Faq/Faq";
 import Home from "../../components/Home/Home";
 import Login from "../../components/Login/Login";
@@ -14,6 +15,7 @@ export const routs=createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<ErrorPage></ErrorPage>,
         children:[
             {
                 path:'/',
